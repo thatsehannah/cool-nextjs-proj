@@ -1,6 +1,7 @@
 import React from 'react';
 
 const url = 'https://www.course-api.com/react-tours-project';
+// const url = 'https://www.course-api.com/react-tours-projects'; //invalid url to trigger an error
 
 type Tour = {
   id: string;
@@ -11,7 +12,7 @@ type Tour = {
 };
 
 const fetchTours = async (): Promise<Tour[]> => {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 3000)); //simulating a delay
   const response = await fetch(url);
   const data: Tour[] = await response.json();
 
