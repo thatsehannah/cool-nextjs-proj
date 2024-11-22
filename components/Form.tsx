@@ -1,4 +1,6 @@
+'use client';
 import React from 'react';
+import { createUserAction } from '@/utils/actions';
 
 const formStyle = 'max-w-lg flex flex-col gap-y-4  shadow rounded p-8';
 const inputStyle = 'border shadow rounded py-2 px-3 text-gray-700';
@@ -9,7 +11,7 @@ const Form = () => {
   return (
     <form
       className={formStyle}
-      action=''
+      action={createUserAction}
     >
       <h2 className='text-2xl capitalize mb-5'>Create User</h2>
       <input
