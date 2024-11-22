@@ -8,7 +8,9 @@ type User = {
   lastName: string;
 };
 
-export const createUserAction = async (formData: FormData) => {
+export const createUserAction = async (prevState: any, formData: FormData) => {
+  console.log(prevState);
+
   await new Promise((resolve) => setTimeout(resolve, 3000)); //simulating a delay
   const firstName = formData.get('firstName') as string;
   const lastName = formData.get('lastName') as string;
@@ -20,9 +22,11 @@ export const createUserAction = async (formData: FormData) => {
 
   try {
     await saveUser(newUser);
-    revalidatePath('/actions'); //revalidating cache
+    revalidatePath('/actions'); //revalidating cache for action spage
+    return 'User created successfully...';
   } catch (error) {
     console.log(error);
+    return 'Failed to create user...';
   }
 };
 
