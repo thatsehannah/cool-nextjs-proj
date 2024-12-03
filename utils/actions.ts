@@ -55,3 +55,15 @@ export const deleteUserAction = async (formData: FormData) => {
     console.log(error);
   }
 };
+
+export const removeUserAction = async (id: string) => {
+  const users = await fetchUsers();
+  const updatedUsers = users.filter((user) => user.id !== id);
+
+  try {
+    await writeFile('users.json', JSON.stringify(updatedUsers));
+    revalidatePath('/actions'); //revalidating cache for actions page
+  } catch (error) {
+    console.log(error);
+  }
+};

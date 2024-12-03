@@ -1,4 +1,4 @@
-import { deleteUserAction } from '@/utils/actions';
+import { removeUserAction } from '@/utils/actions';
 import React from 'react';
 
 type DeleteButtonProps = {
@@ -6,13 +6,9 @@ type DeleteButtonProps = {
 };
 
 const DeleteButton = ({ id }: DeleteButtonProps) => {
+  const removeUserWithId = removeUserAction.bind(null, id);
   return (
-    <form action={deleteUserAction}>
-      <input
-        type='hidden'
-        name='id'
-        value={id}
-      />
+    <form action={removeUserWithId}>
       <button
         type='submit'
         className='bg-red-500 text-white text-xs rounded p-2'
